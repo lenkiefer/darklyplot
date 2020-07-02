@@ -1,43 +1,47 @@
-#' Darkly plot function
+#' Function to create a dark themed plot
 #'
 #' A dark themed plot
-#' @param df  input data frame
+#' @param df input data frame requires input, must have a date column named date
 #' @param column input data column name to plot
 #' @param col color for line, defaults to "white"
 #' @param n.decimals number of decimals to display, default is 0
-#' @param refline
+#' @param refline include a reference line? default is FALSE
+#' @param refValue value for reference line, defaults to 0
+#' @param shade shade under the line? default is FALSE
+#' @param shadeCol color for shading under line default is "dodgerblue"
+#' @param shadeAlpha alpha (transparency) for shading, default is 0.15
+#' @param minCol color for minimum value
+#' @param maxCol color for maximum value
+#' @param firstCol color for first value
+#' @param lastCol color of last value
+#' @param labelX function for labeling values, default is round, percent also available
+#' @param Ndodge n.dodge parameter passed to scale_x_date(guide_axis(n.dodge = Ndodge)...)
 #' @keywords theme
 #' @export
 #' @examples
-#' @import mutate
+#' darklyplot(mtg_rate,"rate",labelx="roundx",n.decimals=3)
+#' darklyplot(mtg_rate,"rate",labelx="roundx",n.decimals=3,shade=TRUE,refline=TRUE)
 #' @import mdthemes
 #' @import ggthemes
-#' darklyplot(df,y)
-#'
 
 
-darklyplot <- function(df=indata,
+
+darklyplot <- function(df,
                        column,
-                       col="white",n.decimals=0,
-                   refline=FALSE,
-                   refValue=0,
-                   refCol=NA,
-                   shade=FALSE,
-                   minCol="#6CB23F",
-                   maxCol="#FD5305",
-                   firstCol="white",
-                   lastCol="#00AFEF",
-                   shadeCol="dodgerblue",
-                   shadeAlpha=0.15,
-                   labelx="round"){
-
-  my_format = function(x, labelx, n.decimals = 2) {
-    case_when(
-      labelx == "round" ~ as.character(round(x, n.decimals)),
-      labelx == "percent" ~ scales::percent(x, n.decimals),
-      T ~ as.character(x)
-    )
-  }
+                       col="white",
+                       n.decimals=0,
+                       refline=FALSE,
+                       refValue=0,
+                       refCol=NA,
+                       shade=FALSE,
+                       shadeCol="dodgerblue",
+                       shadeAlpha=0.15,
+                       minCol="#6CB23F",
+                       maxCol="#FD5305",
+                       firstCol="white",
+                       lastCol="#00AFEF",
+                       labelx="round",
+                       Ndodge=3){
 
   if (is.na(refCol)){refCol=col}
   column=sym(column)
@@ -106,7 +110,7 @@ darklyplot <- function(df=indata,
         if (refline) {
           glue::glue(
             "{shiny::span('",
-            my_format(refValue, labelx, n.decimals),
+            darkly_format(refValue, labelx, n.decimals),
             "', style='color:",
             refCol,
             "')}"
@@ -114,28 +118,28 @@ darklyplot <- function(df=indata,
         },
         glue::glue(
           "{shiny::span('**",
-          my_format(max(df$yvar), labelx, n.decimals),
+          darkly_format(max(df$yvar), labelx, n.decimals),
           "**', style='color:",
           maxCol,
           "')}"
         ),
         glue::glue(
           "{shiny::span('**",
-          my_format(tail(df, 1)$yvar, labelx, n.decimals),
+          darkly_format(tail(df, 1)$yvar, labelx, n.decimals),
           "**', style='color:",
           lastCol,
           "')}"
         ),
         glue::glue(
           "{shiny::span('**",
-          my_format(head(df, 1)$yvar, labelx, n.decimals),
+          darkly_format(head(df, 1)$yvar, labelx, n.decimals),
           "**', style='color:",
           firstCol,
           "')}"
         ),
         glue::glue(
           "{shiny::span('**",
-          my_format(min(df$yvar), labelx, n.decimals),
+          darkly_format(min(df$yvar), labelx, n.decimals),
           "**', style='color:",
           minCol,
           "')}"
@@ -144,7 +148,7 @@ darklyplot <- function(df=indata,
     ) +
     scale_x_date(
       breaks = c(min(df$date), dd3, dd2, max(df$date)),
-      guide = guide_axis(n.dodge = 3),
+      guide = guide_axis(n.dodge = Ndodge),
       labels =
         c(
           #as.character(min(df$date)),
@@ -202,7 +206,7 @@ darklyplot <- function(df=indata,
       theme_dark2(base_size = 18) +
         theme(
           axis.ticks.length = unit(0.5, "cm"),
-          #axis.ticks.margin=unit(0.75, "cm"),
+          axis.ticks = element_line(color = col, size  =  0.2),
           plot.title = element_text(face = "bold"),
           panel.grid.minor = element_blank(),
           plot.subtitle = element_text(size = rel(0.8)),

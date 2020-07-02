@@ -1,13 +1,14 @@
-#' Theme Dark Function
+#' Alternative dark theme for ggplot2
 #'
 #' A dark themed function
-#' @param base_size  defaults to 12
-#' @param base_family defaults to Courier New
+#' @param base_size  base font size, given in pts. defaults to 12
+#' @param base_family base font family, defaults to Courier New
 #' @keywords theme
 #' @export
 #' @examples
-#' ggplot(data=NULL,aes(x=1:2,y=1:2))+geom_point()+theme_dark2()
-#'
+#' ggplot(data=NULL,aes(x=1:5,y=1:5))+geom_line()+theme_dark2()
+
+
 theme_dark2 = function(base_size = 12, base_family = "Courier New") {
   theme_grey(base_size = base_size, base_family = base_family) %+replace%
 

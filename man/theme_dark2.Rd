@@ -2,20 +2,19 @@
 % Please edit documentation in R/theme_dark2.R
 \name{theme_dark2}
 \alias{theme_dark2}
-\title{Theme Dark Function}
+\title{Alternative dark theme for ggplot2}
 \usage{
 theme_dark2(base_size = 12, base_family = "Courier New")
 }
 \arguments{
-\item{base_size}{defaults to 12}
+\item{base_size}{base font size, given in pts. defaults to 12}
 
-\item{base_family}{defaults to Courier New}
+\item{base_family}{base font family, defaults to Courier New}
 }
 \description{
 A dark themed function
 }
 \examples{
-ggplot(data=NULL,aes(x=1:2,y=1:2))+geom_point()+theme_dark2()
-
+ggplot(data=NULL,aes(x=1:5,y=1:5))+geom_line()+theme_dark2()
 }
 \keyword{theme}

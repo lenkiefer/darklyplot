@@ -1,21 +1,20 @@
 Package: darklyplot
-Type: Package
-Title: Make Simple Dark Time Series Plots
+Title: Make Simple Dark Themed Time Series Plots
 Version: 0.1.0
-Author: Leonard Kiefer
-Maintainer: Leonard Kiefer <lenkiefer@hotmail.com>
-Description: Make dark themed plots.
-License: What license is it under?
+Authors@R: person("Leonard", "Kiefer", role = c("aut", "cre"), email = "lenkiefer@hotmail.com")
+Description: This packages lets you create simple dark-theme times series plots.  
+    It extends ggplot2 and relies on mdthemes to make color coded axis labels.
+    The axis labels use ggthemes::geom_rangeframe to create Tufte-like axes.
+    Through parameters, the user can alter the colors, include shading under the line,
+    and also add a single reference line.
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
 Depends:
-    ggplot2,
-    dplyr,  
-    ggthemes,
-    mdthemes
-Imports:
-    ggplot2,
     dplyr,
+    glue,
+    ggplot2,
     ggthemes,
-    mdthemes
+    mdthemes,
+    scales,
+    shiny
+RoxygenNote: 7.1.0

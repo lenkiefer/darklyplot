@@ -2,10 +2,10 @@
 % Please edit documentation in R/darklyplot.R
 \name{darklyplot}
 \alias{darklyplot}
-\title{Darkly plot function}
+\title{Function to create a dark themed plot}
 \usage{
 darklyplot(
-  df = indata,
+  df,
   column,
   col = "white",
   n.decimals = 0,
@@ -13,21 +13,52 @@ darklyplot(
   refValue = 0,
   refCol = NA,
   shade = FALSE,
+  shadeCol = "dodgerblue",
+  shadeAlpha = 0.15,
   minCol = "#6CB23F",
   maxCol = "#FD5305",
   firstCol = "white",
   lastCol = "#00AFEF",
-  shadeCol = "dodgerblue",
-  shadeAlpha = 0.15,
-  labelx = "round"
+  labelx = "round",
+  Ndodge = 3
 )
 }
 \arguments{
-\item{df}{input data frame}
+\item{df}{input data frame requires input, must have a date column named date}
 
 \item{column}{input data column name to plot}
+
+\item{col}{color for line, defaults to "white"}
+
+\item{n.decimals}{number of decimals to display, default is 0}
+
+\item{refline}{include a reference line? default is FALSE}
+
+\item{refValue}{value for reference line, defaults to 0}
+
+\item{shade}{shade under the line? default is FALSE}
+
+\item{shadeCol}{color for shading under line default is "dodgerblue"}
+
+\item{shadeAlpha}{alpha (transparency) for shading, default is 0.15}
+
+\item{minCol}{color for minimum value}
+
+\item{maxCol}{color for maximum value}
+
+\item{firstCol}{color for first value}
+
+\item{lastCol}{color of last value}
+
+\item{Ndodge}{n.dodge parameter passed to scale_x_date(guide_axis(n.dodge = Ndodge)...)}
+
+\item{labelX}{function for labeling values, default is round, percent also available}
 }
 \description{
 A dark themed plot
+}
+\examples{
+darklyplot(mtg_rate,"rate",labelx="roundx",n.decimals=3)
+darklyplot(mtg_rate,"rate",labelx="roundx",n.decimals=3,shade=TRUE,refline=TRUE)
 }
 \keyword{theme}
