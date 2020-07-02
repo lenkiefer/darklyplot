@@ -3,6 +3,9 @@
 #' A dark themed plot
 #' @param df  input data frame
 #' @param column input data column name to plot
+#' @param col color for line, defaults to "white"
+#' @param n.decimals number of decimals to display, default is 0
+#' @param refline
 #' @keywords theme
 #' @export
 #' @examples
