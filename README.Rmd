@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of darklyplot is to create simple time series plots with a dark background.  The miniminum and maximum values are highlghted, and color coded along with the y axis and x axis labels.
+The goal of darklyplot is to create simple time series plots with a dark background.  The miniminum and maximum values are highlighted, and color coded along with the y axis and x axis labels.
 
 ## Installation
 
@@ -36,9 +36,10 @@ This is a basic example which shows you how to solve a common problem:
 library(darklyplot)
 darklyplot(df=mtg_rate,column="rate",labelx="roundx",n.decimals=3)
 ```
+
 You can vary the chart look with several parameters:
 
-```{r example2,message=FALSE,warning=FALSE,out.width="50%",fig.width=12,fig.heigh=8}
+```{r example2,message=FALSE,warning=FALSE,out.width="50%",fig.width=12,fig.height=8}
 darklyplot(df=mtg_rate,
           column="rate",
           col="white",  #can use R color names or hex 
@@ -57,7 +58,8 @@ darklyplot(df=mtg_rate,
           Ndodge=2)
 
 ```
-Will work with any dataframe with a numberic column and a date index:
+
+This will work with any dataframe with a numeric column and a date index (named "date"):
 
 ```{r example-3,message=FALSE,warning=FALSE,out.width="50%",fig.width=12,fig.height=8}
 set.seed(20200704)

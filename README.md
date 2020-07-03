@@ -8,7 +8,7 @@
 <!-- badges: end -->
 
 The goal of darklyplot is to create simple time series plots with a dark
-background. The miniminum and maximum values are highlghted, and color
+background. The miniminum and maximum values are highlighted, and color
 coded along with the y axis and x axis labels.
 
 ## Installation
@@ -30,8 +30,9 @@ library(darklyplot)
 darklyplot(df=mtg_rate,column="rate",labelx="roundx",n.decimals=3)
 ```
 
-<img src="man/figures/README-example-1.png" width="50%" /> You can vary
-the chart look with several parameters:
+<img src="man/figures/README-example-1.png" width="50%" />
+
+You can vary the chart look with several parameters:
 
 ``` r
 darklyplot(df=mtg_rate,
@@ -52,8 +53,10 @@ darklyplot(df=mtg_rate,
           Ndodge=2)
 ```
 
-<img src="man/figures/README-example2-1.png" width="50%" /> Will work
-with any dataframe with a numberic column and a date index:
+<img src="man/figures/README-example2-1.png" width="50%" />
+
+This will work with any dataframe with a numeric column and a date index
+(named “date”):
 
 ``` r
 set.seed(20200704)
