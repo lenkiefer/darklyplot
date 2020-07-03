@@ -13,10 +13,8 @@ coded along with the y axis and x axis labels.
 
 ## Installation
 
-You can install the released version of darklyplot from
-\[github(<https://CRAN.R-project.org>) with:
-
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version of darklyplot from
+[GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -32,4 +30,4 @@ library(darklyplot)
 darklyplot(mtg_rate,"rate",labelx="roundx",n.decimals=3)
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="man/figures/README-example-1.png" width="50%" />

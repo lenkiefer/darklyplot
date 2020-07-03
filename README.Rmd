@@ -22,10 +22,7 @@ The goal of darklyplot is to create simple time series plots with a dark backgro
 
 ## Installation
 
-You can install the released version of darklyplot from [github(https://CRAN.R-project.org) with:
-
-
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version of darklyplot from [GitHub](https://github.com/) with: 
 
 ``` r
 # install.packages("devtools")
@@ -35,7 +32,7 @@ devtools::install_github("lenkiefer/darklyplot")
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example,message=FALSE,warning=FALSE,fig.width=9}
+```{r example,message=FALSE,warning=FALSE,out.width="50%",fig.width=12}
 library(darklyplot)
 darklyplot(mtg_rate,"rate",labelx="roundx",n.decimals=3)
 ```
