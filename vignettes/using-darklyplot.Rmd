@@ -1,10 +1,10 @@
 ---
-title: "using-darklyplot"
+title: "Using darklyplot"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{using-darklyplot}
+  %\VignetteIndexEntry{Using darklyplot}
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+  \usepackage[utf8]{inputenc}
 ---
 
 ```{r, include = FALSE}
@@ -70,7 +70,7 @@ You can used darklyplot with any time series as long as  the data is stored a da
 
 In the example below we first filter `txhousing` to just the observations for Lubbock, Texas and try to plot sales with darklyplot.  This code will result in an error
 
-```{r vignette-5,message=FALSE,eval=FALSE,warning=FALSE,out.width="50%",fig.width=12,purl = FALSE,fig.height=8,error=TRUE}
+```{r vignette-5,message=FALSE,eval=FALSE,warning=FALSE,out.width="50%",fig.width=12,purl = FALSE,fig.height=8}
 txhousing2 <- txhousing[txhousing$city=="Lubbock",]
 
 darklyplot(df=txhousing2,column="sales",labelx="roundx",n.decimals=3,
