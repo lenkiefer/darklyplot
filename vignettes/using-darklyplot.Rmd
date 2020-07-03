@@ -46,7 +46,7 @@ darklyplot(df=mtg_rate,column="rate",
 
 ## Shading and reference lines
 
-darklyplot allows you to add a reference line.  By default the reference line is set to 0, but you can adjust it to any fixed value.  For example, we can modify our mortgage rate plot to add a reference line at 5 percentage points.
+The darklyplot packages allows you to add a reference line to your plot.  By default the reference line is set to 0, but you can adjust it to any fixed value.  For example, we can modify our mortgage rate plot to add a reference line at 5 percentage points.
 
 
 ```{r vignette-3,message=FALSE,warning=FALSE,out.width="50%",fig.width=12,fig.height=8}
