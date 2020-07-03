@@ -68,9 +68,9 @@ darklyplot(df=mtg_rate,column="rate",labelx="roundx",n.decimals=3,
 
 You can used darklyplot with any time series as long as  the data is stored a dataframe with a date formatted column called `date`, and the desired column is numeric.  THe `ggplot` package comes with a dataframe called `txhousing` that has a column called date.  However, it is a double not a date so if you tried to use it with darklplot you would get an error.
 
-In the example below we first filter `txhousing` to just the observations for Lubbock, Texas and try to plot sales with darklyplot.
+In the example below we first filter `txhousing` to just the observations for Lubbock, Texas and try to plot sales with darklyplot.  This code will result in an error
 
-```{r vignette-5,message=FALSE,warning=FALSE,out.width="50%",fig.width=12,fig.height=8,error=TRUE}
+```{r vignette-5,message=FALSE,eval=FALSE,warning=FALSE,out.width="50%",fig.width=12,purl = FALSE,fig.height=8,error=TRUE}
 txhousing2 <- txhousing[txhousing$city=="Lubbock",]
 
 darklyplot(df=txhousing2,column="sales",labelx="roundx",n.decimals=3,
@@ -78,9 +78,13 @@ darklyplot(df=txhousing2,column="sales",labelx="roundx",n.decimals=3,
            shade=TRUE,shadeCol="yellow",shadeAlpha=0.35)
 ```
 
+```{r, eval=FALSE}
+#> Error: Invalid input: date_trans works with objects of class Date only
+```
 If we convert the `date` column to date format the plot will work:
 
 ```{r vignette-6,message=FALSE,warning=FALSE,out.width="50%",fig.width=12,fig.height=8}
+txhousing2 <- txhousing[txhousing$city=="Lubbock",]
 txhousing2$date <- as.Date(ISOdate(txhousing2$year, txhousing2$month,1))
 
 darklyplot(df=txhousing2,column="sales",labelx="roundx",n.decimals=3)+
