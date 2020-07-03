@@ -8,7 +8,6 @@
 #' @examples
 #' ggplot(data=NULL,aes(x=1:5,y=1:5))+geom_line()+theme_dark2()
 
-
 theme_dark2 = function(base_size = 12, base_family = "Courier New") {
   theme_grey(base_size = base_size, base_family = base_family) %+replace%
 
